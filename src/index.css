@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+*{
+    @apply box-border
+}
+
+html,body{
+    @apply overflow-x-hidden 
+}
+
+
