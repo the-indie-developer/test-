@@ -20,28 +20,31 @@ const Team = () => {
       url: "https://i.ibb.co/wZnY42Hh/Vishal.jpg"
     },
     {
-      name: "Anil Singhal",
+      name: "Naveen Jawala",
       profile: "Founder",
-      description: "Oversees all internal operations, ensuring our projects run smoothly and efficiently to maximize our on-the-ground impact.",
-      url: "https://i.ibb.co/cSGczYBF/Whats-App-Image-2025-09-05-at-1-15-57-PM.jpg"
+      description: "Manages our financial health with meticulous care, ensuring our long-term sustainability and responsible use of funds.",
+      url: "https://i.ibb.co/XZZ6yTJQ/Whats-App-Image-2025-09-05-at-12-46-18-PM.jpg"
     },
+    
     {
       name: "Pankaj Goyal",
       profile: "Founder",
       description: "Builds and nurtures our relationship with the communities we serve, fostering trust and ensuring their voices are heard.",
       url: "https://i.ibb.co/q3XJZ7td/pankaj-Goy.png"
     },
-    {
-      name: "Naveen Jawala",
-      profile: "Founder",
-      description: "Manages our financial health with meticulous care, ensuring our long-term sustainability and responsible use of funds.",
-      url: "https://i.ibb.co/XZZ6yTJQ/Whats-App-Image-2025-09-05-at-12-46-18-PM.jpg"
-    },
+    
     {
       name: "Gaurav Aggarwal",
       profile: "Founder",
       description: "Drives strategic partnerships and resource mobilization, ensuring the scalability and reach of our initiatives.",
       url: "https://i.ibb.co/kb4RGpq/gaurav-Agg.png"
+    },
+    
+    {
+      name: "Ashok Singhal",
+      profile: "Founder",
+      description: "Provides invaluable guidance and strategic insights, leveraging years of experience to help shape our long-term vision.",
+      url: "https://i.ibb.co/4xWNrKD/Ashok-Singhal.png"
     },
     {
       name: "Lalit Aggarwal",
@@ -50,10 +53,10 @@ const Team = () => {
       url: "https://i.ibb.co/1YrRDgps/lalit-Aggarwal.png"
     },
     {
-      name: "Ashok Singhal",
+      name: "Anil Singhal",
       profile: "Founder",
-      description: "Provides invaluable guidance and strategic insights, leveraging years of experience to help shape our long-term vision.",
-      url: "https://i.ibb.co/4xWNrKD/Ashok-Singhal.png"
+      description: "Oversees all internal operations, ensuring our projects run smoothly and efficiently to maximize our on-the-ground impact.",
+      url: "https://i.ibb.co/cSGczYBF/Whats-App-Image-2025-09-05-at-1-15-57-PM.jpg"
     },
   ];
 
