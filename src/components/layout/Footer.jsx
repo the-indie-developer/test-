@@ -32,7 +32,7 @@ const SiteFooter = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Heart className="h-8 w-8 text-emerald-500" />
-              <span className="text-xl font-bold">MeriPehchaan</span>
+              <span className="text-xl font-bold">Meri Pehchaan</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Empowering communities and transforming lives through sustainable development,
@@ -145,7 +145,7 @@ const SiteFooter = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} HopeForward NGO. All rights reserved. | Privacy Policy | Terms of Service
+            © {new Date().getFullYear()} Meri Pehchaan NGO. All rights reserved. | Privacy Policy | Terms of Service
           </p>
         </div>
       </div>

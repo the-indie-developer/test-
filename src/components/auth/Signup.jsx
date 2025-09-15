@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Mail, Lock, User, Eye, EyeOff, Heart } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { data, NavLink, useNavigate } from 'react-router-dom';
+import { generateOtp, genNewUserOtp, userSignUp } from '../../services/user.services';
+import toast from 'react-hot-toast';
 
 export const Signup = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
-    name: '',
+    fullname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -12,40 +14,72 @@ export const Signup = ({ onNavigate }) => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [submit, setSubmit] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+ 
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
-    // --- Validation logic remains the same ---
-    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+   
+    if (!formData.fullname || !formData.email || !formData.password || !formData.confirmPassword) {
       setError('Please fill in all fields');
+      setSubmit(false)
+      
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
+      setSubmit(false)
       return;
     }
 
     if (formData.password.length < 6) {
       setError('Password must be at least 6 characters long');
+      setSubmit(false)
       return;
     }
 
-    // --- Authentication logic is replaced with a simulation ---
-    // TODO: Replace this simulation with your own API call (e.g., using fetch)
-    console.log('Form submitted. Signup data:', {
-      name: formData.name,
+    const newData = {
+      fullname: formData.fullname,
       email: formData.email,
-      password: formData.password,
-      role: formData.role
-    });
+      role: formData.role,
+      password: formData.password
+    };
 
-    // Simulate a successful signup and navigate
-    alert('Account created successfully! (Simulation)');
-    onNavigate('dashboard');
+    setSubmit(!submit)
+
+    
+
+    try {
+      const response = await genNewUserOtp({email:formData.email});
+      toast.success(`${response.data.message}`)
+      localStorage.setItem('ud-f',JSON.stringify(newData))
+      navigate('/ch-new-otp')
+      setSubmit(!submit)
+   
+     
+    }  catch (err) {
+  setSubmit(false);
+
+  
+  if (err.response) {
+  
+    setError(err.response.data.message);
+    console.log(err.response.data.message);
+  } else if (err.request) {
+ 
+    setError("Network error. Please try again later.");
+    console.log(err.request);
+  } else {
+   
+    setError("An unexpected error occurred.");
+    console.log('Error', err.message);
+  }
+}
   };
 
   const handleChange = (e) => {
@@ -77,18 +111,18 @@ export const Signup = ({ onNavigate }) => {
               </div>
             )}
 
-            {/* Name */}
+            {/* Full Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="fullname" className="block text-sm font-medium text-gray-700 mb-2">
                 Full Name
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  id="fullname"
+                  name="fullname"
+                  value={formData.fullname}
                   onChange={handleChange}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
                   placeholder="Enter your full name"
@@ -212,9 +246,12 @@ export const Signup = ({ onNavigate }) => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={submit}
+              className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+              
+              "
             >
-              Create Account
+              {submit?'Creating...':'Create Account'}
             </button>
           </form>
 
@@ -223,7 +260,6 @@ export const Signup = ({ onNavigate }) => {
             <p className="text-gray-600">
               Already have an account?{' '}
               <NavLink
-                onClick={() => onNavigate('login')}
                 to='/login'
                 className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors duration-200"
               >
@@ -235,12 +271,12 @@ export const Signup = ({ onNavigate }) => {
 
         {/* Back to Home */}
         <div className="text-center mt-6">
-          <button
-            onClick={() => onNavigate('home')}
+          <NavLink
+            to='/'
             className="text-gray-600 hover:text-gray-800 transition-colors duration-200"
           >
             ← Back to Home
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>

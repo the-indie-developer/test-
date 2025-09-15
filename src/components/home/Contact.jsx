@@ -1,16 +1,86 @@
 import React, { useState, useEffect } from "react";
 import Header from "../layout/Navbar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { sendMsg } from "../../services/contact.service";
+import toast from 'react-hot-toast'
+
 
 const Contact = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [submit, setSubmit] = useState(false);
+  const [err, setErr] = useState('')
+  const navigate = useNavigate()
+ 
+  const [formData,setFormData] = useState({
+    name:'',
+    email:'',
+    message:''
+  })
 
   useEffect(() => {
+    window.scrollTo({
+      top:0
+    })
+
+      resetForm()
+    
+
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  const resetForm = ()=>{
+    formData.name = ''
+    formData.email = ''
+    formData.message = ''
+  }
+
+
+  const handleChange =  (e)=>(
+    setFormData(prev=>({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  )
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    setErr('')
+    setSubmit(true)
+    if (formData.message < 10) {
+      setErr("Message should be aleast 10 characters !")
+      setSubmit(false)
+      return;
+    }
+
+    const data = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message
+    }
+   
+    setSubmit(true)
+    try {
+      const response = await sendMsg(data)
+      console.log(response.data)
+      toast(response.data.message)
+      resetForm()
+      setSubmit(false)
+      navigate('/gr-')
+
+      
+      
+
+    } catch (error) {
+      console.log(error)
+      setSubmit(false)
+      setErr(error.response.data.message)
+    }
+   
+  }
+
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -56,6 +126,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <form>
+                  {err.length > 2 && <h1 className="text-red-800 px-5 py-2 mb-10 rounded-[2px] bg-red-100 border-[0.5px] border-red-200 ">{err}</h1>}
                   <div className="mb-6">
                     <label
                       htmlFor="name"
@@ -68,8 +139,13 @@ const Contact = () => {
                       id="name"
                       name="name"
                       required
+                      value={formData.name}
+                      onChange={handleChange}
+                      
+                      
                       className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
                       placeholder="Your Name"
+                     
                     />
                   </div>
                   <div className="mb-6">
@@ -84,6 +160,8 @@ const Contact = () => {
                       id="email"
                       name="email"
                       required
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
                       placeholder="Your Email"
                     />
@@ -100,15 +178,19 @@ const Contact = () => {
                       name="message"
                       rows="5"
                       required
+                      value={formData.message}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
                       placeholder="Your Message"
                     ></textarea>
                   </div>
                   <button
                     type="submit"
+                    onClick={handleSubmit}
                     className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition-colors shadow-md"
+                    disabled={submit}
                   >
-                    Send Message
+                  {submit? 'Submitting...':'Submit'}
                   </button>
                 </form>
               </div>

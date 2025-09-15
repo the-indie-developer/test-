@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, Heart } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { userLogin } from '../../services/user.services';
+import SiteFooter from '../layout/Footer.jsx'
+import toast from 'react-hot-toast';
 
 export const Login = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
@@ -9,28 +12,45 @@ export const Login = ({ onNavigate }) => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [submit,setSubmit] = useState(false)
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+   window.scrollTo({
+    top:0
+   })
+  }, [])
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSubmit(!submit)
 
     if (!formData.email || !formData.password) {
       setError('Please fill in all fields');
       return;
     }
+    setSubmit(false)
 
-    // --- Authentication logic is replaced with a simulation ---
-    // TODO: Replace this simulation with your actual API call (e.g., fetch)
-    console.log('Attempting login with:', formData);
+    try {
+      setSubmit(true)
+      const response = await userLogin(formData)
+      const userString = JSON.stringify(response.data)
+      localStorage.setItem('u-',userString)
+      toast('Login Succecessfully')
+      navigate('/')
+      setSubmit(!submit)
 
-    // Simulate login using the demo credentials
-    if (formData.email === 'demo@hopeforward.org' && formData.password === 'demo123') {
-      console.log('Login successful! (Simulation)');
-      alert('Login successful! Navigating to dashboard.');
-      onNavigate('dashboard');
-    } else {
-      setError('Invalid email or password');
+      
+
+    } catch (error) {
+      console.log(error.response.data.message)
+      setError(error.response.data.message || 'Internal server error !')
+      setSubmit(false)
+
     }
+
   };
 
   const handleChange = (e) => {
@@ -41,7 +61,8 @@ export const Login = ({ onNavigate }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-blue-50 flex items-center justify-center px-4 pt-16">
+    <>
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-blue-50 flex items-center justify-center px-4 pt-16 pb-12 ">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
@@ -109,41 +130,28 @@ export const Login = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
+            {/* Forgot Password */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="remember"
-                  className="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember" className="ml-2 text-sm text-gray-700">
-                  Remember me
-                </label>
-              </div>
-              <button
+             
+              <NavLink
                 type="button"
+                to='/forgot-p'
                 className="text-sm text-emerald-600 hover:text-emerald-700 transition-colors duration-200"
               >
                 Forgot password?
-              </button>
+              </NavLink>
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
+              disabled={submit}
               className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Sign In
+              {submit?'Checking...': 'Sign In'}
             </button>
           </form>
 
-          {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-600 mb-2">Demo credentials:</p>
-            <p className="text-xs text-gray-500">Email: demo@hopeforward.org</p>
-            <p className="text-xs text-gray-500">Password: demo123</p>
-          </div>
 
           {/* Sign Up Link */}
           <div className="mt-6 text-center">
@@ -160,17 +168,12 @@ export const Login = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Back to Home */}
-        <div className="text-center mt-6">
-          <button
-            onClick={() => onNavigate('home')}
-            className="text-gray-600 hover:text-gray-800 transition-colors duration-200"
-          >
-            ← Back to Home
-          </button>
-        </div>
+     
       </div>
+     
     </div>
+     <SiteFooter/>
+    </>
   );
 };
 
