@@ -68,7 +68,7 @@ export const Login = ({ onNavigate }) => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Heart className="h-8 w-8 text-emerald-600" />
-            <span className="text-2xl font-bold text-gray-900">HopeForward</span>
+            <span className="text-2xl font-bold text-gray-900">Meri Pehchaan</span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
           <p className="text-gray-600">Sign in to continue your journey of making a difference</p>

@@ -80,7 +80,7 @@ const About = () => {
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About <span className="text-emerald-600">MeriPehchaan</span>
+              About <span className="text-emerald-600">{"Meri Pehchaan"}</span>
             </h2>
 
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
