@@ -102,14 +102,14 @@ const Volunteer = () => {
           <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center mb-12">
             Meet Our <span className="text-yellow-400">Volunteer's</span>
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {volunteers.map((volunteer) => (
               <div
                 key={volunteer.id}
                 className="bg-white backdrop-blur-md rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
               >
                 <div className="p-6 flex flex-col items-center text-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-emerald-500 shadow-md">
+                  <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-emerald-500 shadow-md">
                     <img
                       src={volunteer.profilePic}
                       alt={volunteer.name}

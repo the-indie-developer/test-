@@ -74,7 +74,7 @@ const Hero = () => {
               <div className="bg-white/20 p-4 rounded-full group-hover:bg-white/30 transition-colors duration-300">
                 <Play className="h-6 w-6 ml-1" />
               </div>
-              <span className="text-lg font-medium">Watch Our Story</span>
+              <span className="text-lg font-medium">Watch Our Work</span>
             </button>
           </div>
         </div>

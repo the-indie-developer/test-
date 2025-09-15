@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { BookOpen, Stethoscope, Users2, Leaf, ArrowRight, SquareParkingIcon } from 'lucide-react';
 import Header from  '../layout/Navbar.jsx'; // Adjust path if necessary
 import { useNavigate } from 'react-router-dom';
+import SiteFooter from '../layout/Footer.jsx'
 
-// Import all Lucide icons you might use, for dynamic access later
+
 import * as LucideIcons from 'lucide-react';
 
 const Programs = () => {
@@ -93,6 +94,7 @@ const Programs = () => {
   };
 
   return (
+    <>
     <section id="programs-section" className="py-20 bg-white">
       <Header />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,6 +138,8 @@ const Programs = () => {
         </div>
       </div>
     </section>
+    <SiteFooter/>
+    </>
   );
 };
 

@@ -10,16 +10,24 @@ const Header = () => {
   const [logOut, setLogout] = useState(false);
   const location = useLocation();
   const userData = JSON.parse(localStorage.getItem('u-'))
- 
 
   const getUserFromStorage = localStorage.getItem("u-");
   const handleDonationNavigation = ()=>{
-     if (!userData || userData.user._id === undefined) {
+    if (!userData || userData.user._id === undefined) {
       navigate("/login");
       return;
     }
     navigate('/donate');
   }
+
+  const handleVolunteerNavigation = ()=>{
+    if (!userData || userData.user._id === undefined) {
+      navigate("/login");
+      return;
+    }
+    navigate('/volunteer');
+  }
+
 
   const user = getUserFromStorage ? JSON.parse(getUserFromStorage) : null;
 
@@ -74,7 +82,7 @@ const Header = () => {
         isScrolled ? "bg-white shadow-lg" : "bg-black"
       }`}
     >
-      <div className="container mx-auto sm:px-6 lg:px-8">
+      <div className="container min-w-full sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 relative">
           {/* Logo - Left Side */}
           <div className="flex-1 lg:flex-none">
@@ -85,7 +93,7 @@ const Header = () => {
                 } group-hover:text-emerald-500`}
               />
               <span
-                className={`text-xl font-bold transition-colors duration-300 ${
+                className={ ` mainlogo text-xl font-bold transition-colors duration-300 ${
                   isScrolled ? "text-gray-900" : "text-white"
                 }`}
               >
@@ -95,7 +103,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation  */}
-          <nav className="hidden lg:flex items-center space-x-6 absolute left-1/2 -translate-x-1/2">
+          <nav className=" navmenu hidden lg:flex items-center space-x-6 absolute left-[27%]">
             {navItems.map((item) => (
               <NavLink
                 key={item.key}
@@ -122,7 +130,7 @@ const Header = () => {
               onMouseLeave={() => setIsTeamDropdownOpen(false)}
             >
               <span
-                className={`text-sm font-medium transition-colors duration-300 hover:text-emerald-500 cursor-pointer ${
+                className={` teambox text-sm font-medium transition-colors duration-300 hover:text-emerald-500 cursor-pointer ${
                   isTeamActive
                     ? "text-emerald-600"
                     : isScrolled
@@ -171,9 +179,8 @@ const Header = () => {
               )}
             </div>
           </nav>
-
-          {/* Tablet Navigation */}
-          <nav className="hidden md:flex lg:hidden items-center space-x-6">
+            {/* Tablet Navigation */}
+          <nav className="mobmenu hidden md:flex lg:hidden items-center space-x-6">
             {navItems.map((item) => (
               <NavLink
                 key={item.key}
@@ -191,13 +198,74 @@ const Header = () => {
                 {item.label}
               </NavLink>
             ))}
+              <div
+              className="relative"
+              onMouseEnter={() => setIsTeamDropdownOpen(true)}
+              onMouseLeave={() => setIsTeamDropdownOpen(false)}
+            >
+              <span
+                className={` teambox text-sm font-medium transition-colors duration-300 hover:text-emerald-500 cursor-pointer ${
+                  isTeamActive
+                    ? "text-emerald-600"
+                    : isScrolled
+                    ? "text-gray-700"
+                    : "text-white"
+                }`}
+              >
+                Team
+              </span>
+              {isTeamDropdownOpen && (
+                <div className="absolute top-full mt-2 w-48 bg-white/90 backdrop-blur rounded-md shadow-xl py-1 z-50 animate-fade-in">
+                  <NavLink
+                    to="/core-members"
+                    onClick={() => setIsTeamDropdownOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200 ${
+                        isActive ? "bg-gray-100 text-emerald-600" : ""
+                      }`
+                    }
+                  >
+                    Core Member's
+                  </NavLink>
+                  <NavLink
+                    to="/volunteer"
+                    onClick={() => setIsTeamDropdownOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200 ${
+                        isActive ? "bg-gray-100 text-emerald-600" : ""
+                      }`
+                    }
+                  >
+                    Volunteer's
+                  </NavLink>
+                  <NavLink
+                    to="/donor"
+                    onClick={() => setIsTeamDropdownOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200 ${
+                        isActive ? "bg-gray-100 text-emerald-600" : ""
+                      }`
+                    }
+                  >
+                    Donor's
+                  </NavLink>
+                </div>
+              )}
+            </div>
           </nav>
 
-          {/* User Menu */}
+
+          {/* User Menu & Donate - Right Side */}
           <div className="flex-1 hidden md:flex items-center justify-end space-x-4">
             <button
+              onClick={handleVolunteerNavigation}
+              className=" navbtn bg-yellow-500 text-white px-2 py-1 rounded-md text-sm font-medium hover:bg-yellow-600 transition-colors duration-300 "
+            >
+              Volunteer Now
+            </button>
+            <button
               onClick={handleDonationNavigation}
-              className="bg-yellow-500 text-white px-2 py-1 rounded-md text-sm font-medium hover:bg-yellow-600 transition-colors duration-300 mr-10"
+              className=" navbtn bg-yellow-500 text-white px-2 py-1 rounded-md text-sm font-medium hover:bg-yellow-600 transition-colors duration-300 "
             >
               Donate Now
             </button>
@@ -233,7 +301,7 @@ const Header = () => {
                   }`}
                 >
                   <LucideLogOut className="h-5 w-5 mr-1" />
-                
+                  
                 </button>
               </div>
             ) : (
@@ -260,7 +328,7 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className=" hammenu md:hidden">
             <button
               onClick={handleToggleMenu}
               className={`p-2 rounded-md transition-colors duration-300 ${

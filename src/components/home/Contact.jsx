@@ -3,6 +3,7 @@ import Header from "../layout/Navbar";
 import { NavLink, useNavigate } from "react-router-dom";
 import { sendMsg } from "../../services/contact.service";
 import toast from 'react-hot-toast'
+import SiteFooter from '../layout/Footer.jsx'
 
 
 const Contact = () => {
@@ -293,6 +294,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <SiteFooter/>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Users, Heart, Target, Award } from "lucide-react";
 import Header from "../layout/Navbar";
+import SiteFooter from "../layout/Footer";
 
 
 const About = () => {
@@ -65,6 +66,7 @@ const About = () => {
   ];
 
   return (
+    <>
     <section id="about-section" className="py-20 bg-gray-50">
       <Header />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,6 +161,8 @@ const About = () => {
         </div>
       </div>
     </section>
+    <SiteFooter/>
+    </>
   );
 };
 
