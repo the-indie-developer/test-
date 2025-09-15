@@ -217,7 +217,7 @@ const Header = () => {
               {isTeamDropdownOpen && (
                 <div className="absolute top-full mt-2 w-48 bg-white/90 backdrop-blur rounded-md shadow-xl py-1 z-50 animate-fade-in">
                   <NavLink
-                    to="/core-members"
+                    to="/team"
                     onClick={() => setIsTeamDropdownOpen(false)}
                     className={({ isActive }) =>
                       `block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200 ${
@@ -376,7 +376,7 @@ const Header = () => {
               {isTeamDropdownOpen && (
                 <div className="pl-6 space-y-1">
                   <NavLink
-                    to="/core-members"
+                    to="/team"
                     onClick={() => {
                       setIsMenuOpen(false);
                       setIsTeamDropdownOpen(false);
