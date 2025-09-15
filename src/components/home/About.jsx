@@ -161,7 +161,7 @@ const About = () => {
         </div>
       </div>
     </section>
-    <SiteFooter/>
+    
     </>
   );
 };

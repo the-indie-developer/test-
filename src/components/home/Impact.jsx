@@ -170,15 +170,15 @@ const Impact = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl shadow-lg"><div className="flex items-start space-x-4"><div className="bg-emerald-100 p-2 rounded-lg"><Heart className="h-5 w-5 text-emerald-600" /></div><div><h4 className="font-semibold text-gray-900 mb-2">Over 25,000 children educated</h4><p className="text-gray-600 text-sm">Our initiative brought quality education and resources to thousands of children through our awareness programs.</p></div></div></div>
-              <div className="bg-white p-6 rounded-xl shadow-lg"><div className="flex items-start space-x-4"><div className="bg-blue-100 p-2 rounded-lg"><TrendingUp className="h-5 w-5 text-blue-600" /></div><div><h4 className="font-semibold text-gray-900 mb-2">Women's Microfinance Success</h4><p className="text-gray-600 text-sm">Over 2,000 women started their own businesses through our microfinance program.</p></div></div></div>
-              <div className="bg-white p-6 rounded-xl shadow-lg"><div className="flex items-start space-x-4"><div className="bg-green-100 p-2 rounded-lg"><Globe className="h-5 w-5 text-green-600" /></div><div><h4 className="font-semibold text-gray-900 mb-2">Reforestation Impact</h4><p className="text-gray-600 text-sm">50,000 trees planted, helping combat climate change and restore local ecosystems.</p></div></div></div>
+              <div className="bg-white p-6 rounded-xl shadow-lg"><div className="flex items-start space-x-4"><div className="bg-emerald-100 p-2 rounded-lg"><Heart className="h-5 w-5 text-emerald-600" /></div><div><h4 className="font-semibold text-gray-900 mb-2">Over 10,000 children educated</h4><p className="text-gray-600 text-sm">Our initiative brought quality education and resources to thousands of children through our awareness programs.</p></div></div></div>
+              <div className="bg-white p-6 rounded-xl shadow-lg"><div className="flex items-start space-x-4"><div className="bg-blue-100 p-2 rounded-lg"><TrendingUp className="h-5 w-5 text-blue-600" /></div><div><h4 className="font-semibold text-gray-900 mb-2">Women's Microfinance Success</h4><p className="text-gray-600 text-sm">Over 1,000 women started their own businesses through our microfinance program.</p></div></div></div>
+              <div className="bg-white p-6 rounded-xl shadow-lg"><div className="flex items-start space-x-4"><div className="bg-green-100 p-2 rounded-lg"><Globe className="h-5 w-5 text-green-600" /></div><div><h4 className="font-semibold text-gray-900 mb-2">Reforestation Impact</h4><p className="text-gray-600 text-sm">10,000 trees planted, helping combat climate change and restore local ecosystems.</p></div></div></div>
             </div>
           </div>
         </div>
       </div>
    </section>
-   <SiteFooter/>
+   
    </>
   );
 };
