@@ -419,6 +419,13 @@ const Header = () => {
                   >
                     Donate Now
                   </NavLink>
+                  <NavLink
+                    to="/volunteer"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-center px-3 py-2 rounded-md text-base font-medium bg-yellow-500 text-white hover:bg-yellow-600"
+                  >
+                    Volunteer Now
+                  </NavLink>
                   <div className="flex items-center space-x-3 px-3 py-2">
                     <span className="text-gray-700 font-medium flex items-center space-x-2">
                       <User className="h-5 w-5" />
@@ -450,6 +457,13 @@ const Header = () => {
                     className="block w-full text-center px-3 py-2 rounded-md text-base font-medium bg-yellow-500 text-white hover:bg-yellow-600"
                   >
                     Donate Now
+                  </NavLink>
+                  <NavLink
+                    to="/volunteer"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-center px-3 py-2 rounded-md text-base font-medium bg-yellow-500 text-white hover:bg-yellow-600"
+                  >
+                    Volunteer Now
                   </NavLink>
                   <NavLink
                     to="/login"
