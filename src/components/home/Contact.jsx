@@ -66,7 +66,7 @@ const Contact = () => {
     try {
       const response = await sendMsg(data)
       console.log(response.data)
-      toast(response.data.message)
+      toast.success(response.data.message)
       resetForm()
       setSubmit(false)
       navigate('/gr-')
@@ -77,6 +77,7 @@ const Contact = () => {
     } catch (error) {
       console.log(error)
       setSubmit(false)
+      toast.error(error.response.data.message)
       setErr(error.response.data.message)
     }
    
@@ -188,7 +189,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     onClick={handleSubmit}
-                    className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition-colors shadow-md"
+                    className="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={submit}
                   >
                   {submit? 'Submitting...':'Submit'}
