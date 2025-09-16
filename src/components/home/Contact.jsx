@@ -65,7 +65,7 @@ const Contact = () => {
     setSubmit(true)
     try {
       const response = await sendMsg(data)
-      console.log(response.data)
+      
       toast.success(response.data.message)
       resetForm()
       setSubmit(false)
