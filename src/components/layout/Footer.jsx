@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const SiteFooter = () => {
   const [newsletterMessage, setNewsletterMessage] = useState('');
+  const user =  JSON.parse(localStorage.getItem('u-'))
   const [email, setEmail] = useState('');
   const links = [
     {name:'About Us',to:'/about'},
@@ -14,13 +15,11 @@ const SiteFooter = () => {
   ]
 
   const handleSubscribeClick = () => {
-    if (email) {
-      setNewsletterMessage(`Thank you! Subscription confirmed for ${email}.`);
-      setEmail(''); 
-
-      setTimeout(() => {
-        setNewsletterMessage('');
-      }, 5000);
+    try {
+      const id = user.user._id
+     
+    } catch (error) {
+      console.log(error.response.data.message)
     }
   };
 

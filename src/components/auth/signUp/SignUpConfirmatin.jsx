@@ -52,7 +52,8 @@ const SignUpOtpVerification = () => {
     } catch (err) {
       console.error('OTP verification error:', err);
       toast.error(err.response?.data?.message || 'Failed to verify OTP. Please try again.');
-
+      navigate('/signup')
+      JSON.parse(localStorage.removeItem('ud-f'))
     } finally {
       setLoading(false);
     }
