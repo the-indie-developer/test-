@@ -37,8 +37,7 @@ const DetailedAbout = () => {
     setSubmit(true);
     try {
       const response = await updateUserProfile(data);
-      console.log(response.data);
-      setTimeout(() => {
+        setTimeout(() => {
         setSubmit(false);
          toast(response.data.message);
       }, 1000);
@@ -121,9 +120,9 @@ const DetailedAbout = () => {
     );
   }
 
-  // Placeholder for donation goal data. Replace with real data from programData or an API
-  const currentRaised = 15250; // Example
-  const goalAmount = 50000; // Example
+  
+  const currentRaised = 15250; 
+  const goalAmount = 50000; 
   const progress = Math.min((currentRaised / goalAmount) * 100, 100);
 
   return (
@@ -186,7 +185,7 @@ const DetailedAbout = () => {
                   {programData.description}
                 </p>
 
-                {/* New Donation Goal Section */}
+                {/* Donation Goal Section */}
                 <div
                   className={`bg-white rounded-2xl shadow-xl p-8 border-t-4 ${
                     theme.border
@@ -246,7 +245,7 @@ const DetailedAbout = () => {
                   <button
                     onClick={handleProgramChange}
                     disabled={submit}
-                    className={`w-full mt-6 inline-block text-center text-white font-bold py-3 px-6 rounded-lg ${theme.bg} hover:opacity-90 transition-all duration-300 transform hover:scale-105`}
+                    className={`w-full  mt-6 inline-block text-center text-white font-bold py-3 px-6 rounded-lg ${theme.bg} hover:opacity-90 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed `}
                   >
                     {submit ? "Updating..." : "Support This Program"}
                   </button>

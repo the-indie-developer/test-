@@ -33,7 +33,7 @@ const Dashboard = () => {
     
 
     const fetchProfilePic = async () => {
-      console.log(userData.user._id)
+      
       try {
         const response = await getProfilePic({id:userData.user._id})
         setProfilePicture(`${response.data.picUrl}`)
