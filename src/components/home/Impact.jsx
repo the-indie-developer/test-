@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, Globe, Heart, Award, Quote } from 'lucide-react';
 import Header from '../layout/Navbar';
-import SiteFooter from '../layout/Footer.jsx'
+
 
 const useAnimatedCounter = (endValue, duration = 2000) => {
   const [count, setCount] = useState(0);

@@ -255,7 +255,7 @@ const Header = () => {
           </nav>
 
 
-          {/* User Menu & Donate - Right Side */}
+          {/* User Menu & Donate  */}
           <div className="flex-1 hidden md:flex items-center justify-end space-x-4">
             <button
               onClick={handleVolunteerNavigation}

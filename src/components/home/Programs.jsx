@@ -1,10 +1,8 @@
-// src/components/home/Programs.jsx
-
 import React, { useEffect, useState } from 'react';
 import { BookOpen, Stethoscope, Users2, Leaf, ArrowRight, SquareParkingIcon } from 'lucide-react';
-import Header from  '../layout/Navbar.jsx'; // Adjust path if necessary
+import Header from  '../layout/Navbar.jsx'; 
 import { useNavigate } from 'react-router-dom';
-import SiteFooter from '../layout/Footer.jsx'
+
 
 
 import * as LucideIcons from 'lucide-react';
@@ -36,15 +34,15 @@ const Programs = () => {
 
   const programs = [
     {
-      iconName: 'BookOpen', // Changed from icon: BookOpen to iconName: 'BookOpen'
+      iconName: 'BookOpen', 
       title: 'Education Awareness',
       description: 'Raising awareness about the importance of education and promoting literacy among underserved communities.',
-      impact: '25,000+ children educated',
+      impact: '8,000+ children educated',
       color: 'emerald',
       image: 'https://i.ibb.co/jPYfvTKJ/education.jpg',
     },
     {
-      iconName: 'Stethoscope', // Changed
+      iconName: 'Stethoscope', 
       title: 'Career Counseling',
       description: 'Guiding youth through career choices, skill development, and future planning to help them achieve their goals.',
       impact: '1,000+ youth counselled',
@@ -52,7 +50,7 @@ const Programs = () => {
       image: 'https://i.ibb.co/xVZ743q/Gemini-Generated-Image-1rowqx1rowqx1row.png'
     },
     {
-      iconName: 'SquareParkingIcon', // Changed
+      iconName: 'SquareParkingIcon',
       title: 'Skills Training',
       description: 'Providing vocational and technical training to empower youth with practical skills for employment and entrepreneurship.',
       impact: '5,000 youth trained',
@@ -60,18 +58,18 @@ const Programs = () => {
       image: 'https://i.ibb.co/zVy2B5LW/training.jpg'
     },
     {
-      iconName: 'Users2', // Changed
+      iconName: 'Users2',
       title: 'Women Empowerment',
       description: 'Supporting women through education, leadership development, and financial literacy to foster independence and confidence.',
-      impact: '5,000+ women empowered',
+      impact: '3,000+ women empowered',
       color: 'pink',
       image: 'https://images.pexels.com/photos/8923459/pexels-photo-8923459.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      iconName: 'Leaf', // Changed
+      iconName: 'Leaf',
       title: 'Environmental Protection',
       description: 'Promoting eco-friendly practices, tree planting, and sustainability initiatives to protect and restore the environment.',
-      impact: '50,000+ trees planted',
+      impact: '10,000+ trees planted',
       color: 'green',
       image: 'https://images.pexels.com/photos/4503267/pexels-photo-4503267.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     }
@@ -109,7 +107,7 @@ const Programs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => {
-            const IconComponent = LucideIcons[program.iconName]; // Get the component using its string name
+            const IconComponent = LucideIcons[program.iconName]; 
             return (
               <div
                 key={program.title}
@@ -121,7 +119,7 @@ const Programs = () => {
                   <img src={program.image} alt={program.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className={`absolute top-4 right-4 p-3 rounded-full transition-all duration-300 ${getColorClasses(program.color)}`}>
-                    {IconComponent && <IconComponent className="h-6 w-6" />} {/* Render the component */}
+                    {IconComponent && <IconComponent className="h-6 w-6" />} 
                   </div>
                 </div>
                 <div className="p-6">

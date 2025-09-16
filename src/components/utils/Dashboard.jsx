@@ -91,9 +91,9 @@ const Dashboard = () => {
           Profile <span className="text-emerald-500">Overview</span>
         </h1>
 
-        {/* User Details Block with Profile Picture */}
+       
         <div className="bg-white p-6 rounded-xl shadow-md mb-6 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
-          {/* Profile Picture Section */}
+         
           <div className="relative w-32 h-32 rounded-full overflow-hidden bg-gray-200 border-4 border-white shadow-lg group">
             {profilePicture ? (
               <img
@@ -216,11 +216,11 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* History Block (Full Width) */}
+        
         <div className="bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900">History</h2>
           <ul className="space-y-4 text-gray-700">
-            {/* Donation History */}
+          
             <h3 className="text-xl font-medium text-gray-800 mb-2">
               Donation History
             </h3>
@@ -251,7 +251,7 @@ const Dashboard = () => {
               </span>
             </li>
 
-            {/* Recent Activity */}
+            
             <h3 className="text-xl font-medium text-gray-800 mt-6 mb-2">
               Recent Activity
             </h3>
@@ -281,7 +281,7 @@ const Dashboard = () => {
         </div>
       </main>
 
-      {/* Modal for viewing the profile picture */}
+      
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-800/50 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="relative max-w-sm md:max-w-xl w-full">

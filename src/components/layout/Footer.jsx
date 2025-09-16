@@ -132,7 +132,7 @@ const SiteFooter = () => {
                 Subscribe
               </button>
             </div>
-            {/* A container for the success message */}
+            
             <div className="h-6 mt-2">
               {newsletterMessage && (
                 <p className="text-emerald-400 text-sm">{newsletterMessage}</p>

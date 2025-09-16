@@ -26,15 +26,15 @@ const About = () => {
         }
       },
       {
-        // Trigger when 20% of the element is visible
+        
         threshold: 0.2,
       }
     );
 
-    // Start observing the element
+   
     observer.observe(element);
 
-    // Cleanup function to disconnect the observer when the component unmounts
+    
     return () => observer.disconnect();
   }, []);
 

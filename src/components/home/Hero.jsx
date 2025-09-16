@@ -14,7 +14,7 @@ const Hero = () => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
-    return () => clearTimeout(timer); // Cleanup the timer
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -59,7 +59,7 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             
-            {/* MODIFICATION: Converted the button to a Link component */}
+           
             <Link
               to="/programs"
               className="group bg-white text-emerald-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2"
