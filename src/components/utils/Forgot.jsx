@@ -20,12 +20,13 @@ const Forgot =  () => {
     try {
       const response = await generateOtp(email);
      
-      toast(response.data.message)
+      toast.success(response.data.message)
       localStorage.setItem('em',email)
       navigate('/generate-otp')
     } catch (error) {
       console.log(error.response.message)
       setLoading(false)
+      toast.error(error.response.data.message)
     }
 
    

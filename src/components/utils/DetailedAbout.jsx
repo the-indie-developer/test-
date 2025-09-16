@@ -6,6 +6,17 @@ import SiteFooter from "../layout/Footer.jsx";
 import { updateUserProfile } from "../../services/user.services.js";
 import { toast } from "react-hot-toast";
 
+
+const styles = {
+    
+            background: '#333',
+            color: '#fff',
+            borderRadius: '10px',
+            fontSize: '16px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          
+}
+
 const DetailedAbout = () => {
   const userData = JSON.parse(localStorage.getItem("u-"));
   const location = useLocation();
@@ -39,14 +50,15 @@ const DetailedAbout = () => {
       const response = await updateUserProfile(data);
         setTimeout(() => {
         setSubmit(false);
-         toast(response.data.message);
+         toast.success(response.data.message);
       }, 1000);
      
       const updatedUserData = response.data;
 
       localStorage.setItem("u-", JSON.stringify(updatedUserData));
     } catch (err) {
-      console.log(err.response.data.message);
+      console.log(err.response.data.message,styles);
+      toast.error(err.response.data.message)
       setSubmit(false);
     }
   };

@@ -38,15 +38,16 @@ export const Login = ({ onNavigate }) => {
       const response = await userLogin(formData)
       const userString = JSON.stringify(response.data)
       localStorage.setItem('u-',userString)
-      toast('Login Succecessfully')
+      toast.success('Login Succecessfully')
       navigate('/')
       setSubmit(!submit)
 
       
 
-    } catch (error) {
-      console.log(error.response.data.message)
-      setError(error.response.data.message || 'Internal server error !')
+    } catch (err) {
+      console.log(err.response.data.message)
+      toast.error(err.response.data.message || error )
+      setError(err.response.data.message || 'Internal server error !')
       setSubmit(false)
 
     }

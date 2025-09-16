@@ -105,7 +105,42 @@ const routes = createBrowserRouter([
 const App = () => {
   return (
     <>
-    <Toaster/>
+    <Toaster
+    toastOptions={{
+          
+          style: {
+            background: '#333',
+            color: '#fff',
+            borderRadius: '10px',
+            fontSize: '16px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          },
+         
+          success: {
+            style: {
+              background: '#22C55E',
+              color: '#fff',
+            },
+            iconTheme: {
+              primary: '#fff',
+              secondary: '#22C55E',
+            },
+            duration: 4000,
+          },
+          
+          error: {
+            style: {
+              background: '#EF4444',
+              color: '#fff',
+            },
+            iconTheme: {
+              primary: '#fff',
+              secondary: '#EF4444',
+            },
+            duration: 5000,
+          },
+        }}
+    />
    <RouterProvider router={routes}>
       <div className="app"></div>
    </RouterProvider>
