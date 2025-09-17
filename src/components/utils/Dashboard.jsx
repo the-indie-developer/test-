@@ -97,7 +97,7 @@ const Dashboard = () => {
           <div className="relative w-32 h-32 rounded-full overflow-hidden bg-gray-200 border-4 border-white shadow-lg group">
             {profilePicture ? (
               <img
-                src={profilePicture || "https://i.ibb.co/3ywTZFTd/download.png" }
+                src={profilePicture}
                 alt=""
                 className="w-full h-full object-cover object-top"
               />
@@ -287,7 +287,7 @@ const Dashboard = () => {
           <div className="relative max-w-sm md:max-w-xl w-full">
             <button
               onClick={handleCloseModal}
-              className="absolute -top-10 right-0 md:-top- text-white hover:text-gray-300 focus:outline-none"
+              className="absolute -top-7 right-0 md:-top- text-white hover:text-gray-300 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -307,7 +307,7 @@ const Dashboard = () => {
             <img
               src={profilePicture}
               alt="Profile"
-              className="max-w-full max-h-screen rounded-lg shadow-lg"
+              className="max-w-full max-h-[500px] rounded-lg shadow-lg"
             />
           </div>
         </div>
