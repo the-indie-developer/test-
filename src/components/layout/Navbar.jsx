@@ -286,9 +286,7 @@ const Header = () => {
                       className="
                       text-emerald-500 hover:scale-[1.5] cursor-pointer hover:border-b-2 border-emerald-500  "
                     >
-                      {" "}
-                      {user.user.fullname.slice(0, 1).toUpperCase()}
-                      {user.user.fullname.slice(1)}{" "}
+                       {user.user.fullname.split(' ')[0]}
                     </span>
                   </NavLink>
                 </span>
@@ -435,8 +433,7 @@ const Header = () => {
                           to="/dashboard"
                           className="text-emerald-500 hover:scale-[1.5] cursor-pointer hover:border-b-2 border-emerald-500 "
                         >
-                          {user.user.fullname.slice(0, 1).toUpperCase()}
-                          {user.user.fullname.slice(1)}
+                         {user.user.fullname.split(' ')[0]}
                         </NavLink>{" "}
                       </span>
                     </span>

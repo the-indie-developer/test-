@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { Mail } from 'lucide-react';
-import Header from '../layout/Navbar';
-import Footer from '../layout/Footer';
+import React, { useState, useEffect } from "react";
+import { Mail } from "lucide-react";
+import Header from "../layout/Navbar";
+import Footer from "../layout/Footer";
 
 const programs = [
-  'Education Awareness',
-  'Career Counseling',
-  'Skills Training',
-  'Women Empowerment',
-  'Environmental Protection',
+  "Education Awareness",
+  "Career Counseling",
+  "Skills Training",
+  "Women Empowerment",
+  "Environmental Protection",
 ];
 
 const dummyVolunteers = [
   {
     id: 1,
-    name: 'Priya Sharma',
-    email: 'priya.s@example.com',
-    profilePic: 'https://placehold.co/150x150/E9D5FF/2D3748?text=PS',
+    name: "Priya Sharma",
+
+    profilePic: "https://placehold.co/150x150/E9D5FF/2D3748?text=PS",
     program: programs[Math.floor(Math.random() * programs.length)],
   },
   {
     id: 2,
-    name: 'Rajesh Kumar',
-    email: 'rajesh.k@example.com',
-    profilePic: 'https://placehold.co/150x150/BEE3F8/2D3748?text=RK',
+    name: "Rajesh Kumar",
+
+    profilePic: "https://placehold.co/150x150/BEE3F8/2D3748?text=RK",
     program: programs[Math.floor(Math.random() * programs.length)],
   },
   {
     id: 3,
-    name: 'Anjali Singh',
-    email: 'anjali.s@example.com',
-    profilePic: 'https://placehold.co/150x150/A7F3D0/2D3748?text=AS',
+    name: "Anjali Singh",
+
+    profilePic: "https://placehold.co/150x150/A7F3D0/2D3748?text=AS",
     program: programs[Math.floor(Math.random() * programs.length)],
   },
   {
     id: 4,
-    name: 'Siddharth Patel',
-    email: 'siddharth.p@example.com',
-    profilePic: 'https://placehold.co/150x150/FEE2E2/2D3748?text=SP',
+    name: "Siddharth Patel",
+
+    profilePic: "https://placehold.co/150x150/FEE2E2/2D3748?text=SP",
     program: programs[Math.floor(Math.random() * programs.length)],
   },
   {
     id: 5,
-    name: 'Kavita Das',
-    email: 'kavita.d@example.com',
-    profilePic: 'https://placehold.co/150x150/FCDDEC/2D3748?text=KD',
+    name: "Kavita Das",
+
+    profilePic: "https://placehold.co/150x150/FCDDEC/2D3748?text=KD",
     program: programs[Math.floor(Math.random() * programs.length)],
   },
   {
     id: 6,
-    name: 'Vikas Gupta',
-    email: 'vikas.g@example.com',
-    profilePic: 'https://placehold.co/150x150/C4B5FD/2D3748?text=VG',
+    name: "Vikas Gupta",
+
+    profilePic: "https://placehold.co/150x150/C4B5FD/2D3748?text=VG",
     program: programs[Math.floor(Math.random() * programs.length)],
   },
 ];
@@ -78,9 +78,25 @@ const Volunteer = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <svg className="animate-spin h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        <svg
+          className="animate-spin h-10 w-10 text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
         </svg>
       </div>
     );
@@ -120,12 +136,11 @@ const Volunteer = () => {
                     {volunteer.name}
                   </h2>
                   <div className="flex flex-col items-center space-y-1 text-gray-500 mb-2">
-                    <span className="text-sm font-bold ">{volunteer.program}</span>
+                    <span className="text-sm font-bold ">
+                      {volunteer.program}
+                    </span>
                   </div>
-                  <div className="flex items-center text-gray-500 hover:text-emerald-500 transition-colors duration-200">
-                   
-                    <span className="text-sm">{volunteer.email}</span>
-                  </div>
+                  
                 </div>
               </div>
             ))}
